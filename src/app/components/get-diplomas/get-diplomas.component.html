@@ -1,0 +1,73 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">English Name</th>
+      <th scope="col">Arabic Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category</th>
+      <th scope="col">From Date</th>
+      <th scope="col">To Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Delet</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let diploma of data.Diploma; let i=index">
+      <th scope="row">{{diploma.id}}</th>
+      <td>{{diploma.diploma_en_name}}</td>
+      <td>{{diploma.diploma_ar_name}}</td>
+      <td>{{diploma.price}}</td>
+      <td>{{diploma.price}}</td>
+      <td>{{diploma.from_date}}</td>
+      <td>{{diploma.to_date}}</td>
+      <td>{{diploma.diploma_description}}</td>
+      <td><button class="btn btn-danger" (click)="Delet(diploma.id)">D</button></td>
+      <td><button class="btn btn-success" (click)="getDiploma(diploma)">E</button></td>
+
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<div >
+  <h1 >Edit</h1>
+  <form [formGroup]="diplomaForm" (ngSubmit)="update()" class="w-100">
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="englishName">English Name</label>
+        <input type="text" class="form-control" id="englishName" placeholder="English Name"
+          formControlName="diploma_en_name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="arabicName">Arabic Name</label>
+        <input type="text" class="form-control" id="arabicName" placeholder="Arabic Name"
+          formControlName="diploma_ar_name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" id="price" placeholder="Price" formControlName="price">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="startDate">Start Date</label>
+        <input type="date" class="form-control" id="startDate" formControlName="from_date">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="endDate">End Date</label>
+        <input type="date" class="form-control" id="endDate" formControlName="to_date">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3" placeholder="Description"
+          formControlName="diploma_description"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
